@@ -12,6 +12,16 @@
         "destination": "/index.html"
       }
     ],
-    "cleanUrls" : true
+    "cleanUrls": true
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5500
+    },
+    "ui": {
+      "enabled": true,
+      "port": 25525
+    },
+    "singleProjectMode": true
   }
 }
