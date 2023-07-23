@@ -1,10 +1,10 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseApp = initalizeApp({
+const firebaseApp = initializeApp({
     apiKey: "AIzaSyBVTT9A6wUiorP4IeClKMeGkyhS-at7Lg8",
     authDomain: "cuengenv.firebaseapp.com",
     projectId: "cuengenv",
