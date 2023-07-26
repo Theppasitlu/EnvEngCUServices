@@ -43,7 +43,7 @@ onAuthStateChanged(auth, user => {
     if(user != null){
         console.log("เข้าสู่ระบบแล้ว");
     } else {
-        console.log("ยังไม่มีสิทธิ์");
+        console.log("ไม่มีสิทธิ์");
     }
 });
 
