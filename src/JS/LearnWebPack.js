@@ -1,5 +1,13 @@
+
+
+import { async } from '@firebase/util';
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, 
+    connectAuthEmulator,
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut, 
+    } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -15,9 +23,20 @@ const firebaseApp = initializeApp({
   });
 
 const auth = getAuth(firebaseApp);
+connectAuthEmulator(auth, "http://localhost:9099");
 // const db = getAuth(firebaseApp);
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
+
+const loginEmailPassword = async () => {
+    const loginEmail = txtEmal.value;
+    const loginPassword = txtPassword.value;
+
+    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    console.log(userCredential.user);
+}
+
+btnLogin.addEventListener("click", loginEmailPassword);
 
 // ตรวจสอบสิทธิ์การเข้าถึง
 onAuthStateChanged(auth, user => {
@@ -28,4 +47,4 @@ onAuthStateChanged(auth, user => {
     }
 });
 
-console.log("สวัสดีครับ");
+console.log("เว็บไซต์นี้ถูกเขียนโดย เทพสิทธิ์ เหลืองศิริธัญญะ");
