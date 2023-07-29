@@ -18,24 +18,23 @@ module.exports = {
     // devtool: 'eval-source-map',
     entry: "./public/JS/LearnWebPack.js",
     output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
-    },
-    watch: true,
-    module: {
-        rules: [
-            {
-            test: /\.css$/,
-            use: [
-                'style-loader',
-                'css-loader'
+        path: path.resolve(__dirname, "dist"),
+        filename: "bundle.js"
+        },
+        watch: true,
+        module: {
+            rules: [
+              {
+                test: /\.css$/,
+                use: [
+                  'style-loader',
+                  'css-loader'
                 ]
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/Auth.html'
-        })
-        ],
+              }
+            ]
+          },
+            plugins: [
+                new HtmlWebpackPlugin({
+                    template: './public/AuthTest.html'
+                })],
 }
