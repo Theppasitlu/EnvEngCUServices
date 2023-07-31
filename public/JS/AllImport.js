@@ -11,17 +11,10 @@ import {
   } from './ui.js'
 
 // // import { async } from '@firebase/util';
-import { initializeApp } from 'firebase/app';
-import { 
-    getAuth,
-    onAuthStateChanged, 
-    signOut,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    connectAuthEmulator
-} from 'firebase/auth';
+import 'firebase/app';
+import 'firebase/auth';
 
-import { getFirestore } from 'firebase/firestore';
+// import { getFirestore } from 'firebase/firestore';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional

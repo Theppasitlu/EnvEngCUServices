@@ -1,9 +1,9 @@
 // const path = require("path");
 
 // module.exports = {
-//     // mode: "development",
-//     // devtool: "eval-source-map",
-//     entry: "./src/JS/LearnWebPack.js",
+//     mode: "development",
+//     devtool: "eval-source-map",
+//     entry: "./public/JS/LearnWebPack.js",
 //     output: {
 //         path: path.resolve(__dirname, "dist"),
 //         filename: "bundle.js"
@@ -14,9 +14,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = {
-    // mode: 'development',
-    // devtool: 'eval-source-map',
-    entry: "./public/JS/LearnWebPack.js",
+    mode: 'development',
+    devtool: 'eval-source-map',
+    entry: "./public/JS/AllImport.js",
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
@@ -35,6 +35,6 @@ module.exports = {
           },
             plugins: [
                 new HtmlWebpackPlugin({
-                    template: './public/AuthTest.html'
+                    template: './public/NoNodeModules.html'
                 })],
 }

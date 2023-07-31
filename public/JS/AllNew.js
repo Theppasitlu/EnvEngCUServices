@@ -1,39 +1,39 @@
 // import '../CSS/theme.css';
 import { 
-    hideLoginError, 
-    showLoginState, 
-    showLoginForm, 
-    showApp, 
-    showLoginError, 
-    btnLogin,
-    btnSignup,
-    btnLogout
-  } from './ui.js'
+  hideLoginError, 
+  showLoginState, 
+  showLoginForm, 
+  showApp, 
+  showLoginError, 
+  btnLogin,
+  btnSignup,
+  btnLogout
+} from './ui.js'
 
-// // import { async } from '@firebase/util';
-import { initializeApp } from 'firebase/app';
+// import { async } from '@firebase/util';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js';
 import { 
-    getAuth,
-    onAuthStateChanged, 
-    signOut,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    connectAuthEmulator
-} from 'firebase/auth';
+  getAuth,
+  onAuthStateChanged, 
+  signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  connectAuthEmulator
+} from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js';
 
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js';
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseApp = initializeApp({
-    apiKey: "AIzaSyBVTT9A6wUiorP4IeClKMeGkyhS-at7Lg8",
-    authDomain: "cuengenv.firebaseapp.com",
-    projectId: "cuengenv",
-    storageBucket: "cuengenv.appspot.com",
-    messagingSenderId: "824892336924",
-    appId: "1:824892336924:web:a2d9723b09eef4ef0528d9",
-    measurementId: "G-4RM7BHDCC9"
-  });
+  apiKey: "AIzaSyBVTT9A6wUiorP4IeClKMeGkyhS-at7Lg8",
+  authDomain: "cuengenv.firebaseapp.com",
+  projectId: "cuengenv",
+  storageBucket: "cuengenv.appspot.com",
+  messagingSenderId: "824892336924",
+  appId: "1:824892336924:web:a2d9723b09eef4ef0528d9",
+  measurementId: "G-4RM7BHDCC9"
+});
 
 const auth = getAuth(firebaseApp);
 connectAuthEmulator(auth, "http://localhost:9099");
