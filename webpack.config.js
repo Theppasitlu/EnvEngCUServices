@@ -16,7 +16,10 @@ const path = require("path");
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
-    entry: "./public/JS/AllImport.js",
+    entry: {
+      LearnLogin : "./public/JS/LearnWebPack.js",
+      ui : "./public/JS/ui.js",
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
@@ -35,6 +38,6 @@ module.exports = {
           },
             plugins: [
                 new HtmlWebpackPlugin({
-                    template: './public/NoNodeModules.html'
+                    template: './public/PreTempateAuth.html'
                 })],
 }
