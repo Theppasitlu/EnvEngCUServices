@@ -76,16 +76,16 @@ btnSignup.addEventListener("click", createAccount)
 const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
       if (user) {
-        console.log(user);
-        showApp();
-        showLoginState(user);
+        console.log(user)
+        showApp()
+        showLoginState(user)
   
-        hideLoginError();
-        hideLinkError();
+        hideLoginError()
+        hideLinkError()
       }
       else {
-        showLoginForm();
-        lblAuthState.innerHTML = `You're not logged in.`;
+        showLoginForm()
+        lblAuthState.innerHTML = `You're not logged in.`
       }
     });
   }
@@ -95,6 +95,8 @@ const monitorAuthState = async () => {
     await signOut(auth);
   }
 btnLogout.addEventListener("click", logout)
+
+monitorAuthState();
 
 // ตรวจสอบสิทธิ์การเข้าถึง
 onAuthStateChanged(auth, user => {
