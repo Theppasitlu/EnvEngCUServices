@@ -56,7 +56,7 @@ const path = require("path");
 module.exports = {
     mode: 'development',
     devtool: 'eval-source-map',
-    entry: "./public/JS/LearnWebPack.js",
+    entry: "./public/JS/AuthTest.js",
     // {
     //   LearnLogin : "./public/JS/LearnWebPack.js",
     //   ui : "./public/JS/ui.js",
@@ -88,6 +88,6 @@ module.exports = {
           },
             plugins: [
               new HtmlWebpackPlugin({
-                  template: './public/PreTempateAuth.html'
+                  template: './public/AuthTest.html'
               })],
 }
