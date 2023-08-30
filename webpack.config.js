@@ -88,6 +88,6 @@ module.exports = {
           },
             plugins: [
               new HtmlWebpackPlugin({
-                  template: './public/AuthTest.html'
+                  template: './public/login.html'
               })],
 }

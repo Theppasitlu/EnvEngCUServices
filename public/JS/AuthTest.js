@@ -15,10 +15,9 @@ import {
     getAuth,
     onAuthStateChanged, 
     signOut,
-    // createUserWithEmailAndPassword,
-    // signInWithEmailAndPassword,
     GoogleAuthProvider, 
     signInWithPopup, 
+    // signInWithRedirect, 
     // connectAuthEmulator,
     } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -36,19 +35,49 @@ const firebaseConfig = {
   };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
+const auth = getAuth();
 auth.languageCode = 'th';
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 // const db = getAuth(firebaseApp);
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
 const provider = new GoogleAuthProvider();
 
-// signInWithPopup(auth, provider)
+const InIN = async () => {
+  const userCredential = await signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+  console.log(result);
+  console.log("สวัสดี");
+}
+btnUP.addEventListener("click", InIN)
+
+// const ReIn = async () => {
+//   signInWithRedirect(auth, provider);
+// }
+
+// getRedirectResult(auth)
 //   .then((result) => {
-//     // This gives you a Google Access Token. You can use it to access the Google API.
+//     // This gives you a Google Access Token. You can use it to access Google APIs.
 //     const credential = GoogleAuthProvider.credentialFromResult(result);
 //     const token = credential.accessToken;
+
 //     // The signed-in user info.
 //     const user = result.user;
 //     // IdP data available using getAdditionalUserInfo(result)
@@ -64,42 +93,15 @@ const provider = new GoogleAuthProvider();
 //     // ...
 //   });
 
-signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-
-  const loginEmailPassword = async () => {
-    const loginEmail = txtEmail.value;
-    const loginPassword = txtPassword.value;
-
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-        console.log(userCredential.user);
-    }
-    catch (error) {
-        console.log(error);
-        showLoginError(error);
-        }
-}
-btnLogin.addEventListener("click", loginEmailPassword);
-
-// Create new account using email/password
-const createAccount = async () => {
-    const email = txtEmail.value
-    const password = txtPassword.value
-  
-    try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(userCredential.user);
-    }
-    catch(error) {
-      console.log(`There was an error: ${error}`)
-      showLoginError(error)
-    } 
+  // Log out
+const logout = async () => {
+    await signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error happened.
+          });
   }
-btnSignup.addEventListener("click", createAccount)
+btnLogout.addEventListener("click", logout)
 
 // Monitor auth state
 const monitorAuthState = async () => {
@@ -114,17 +116,10 @@ const monitorAuthState = async () => {
       }
       else {
         showLoginForm()
-        lblAuthState.innerHTML = `You're not logged in.`
+        lblAuthState.innerHTML = `You're not logged in. นะครับ`
       }
     });
   }
-  
-  // Log out
-  const logout = async () => {
-    await signOut(auth);
-  }
-btnLogout.addEventListener("click", logout)
-
 monitorAuthState();
 
 // ตรวจสอบสิทธิ์การเข้าถึง
