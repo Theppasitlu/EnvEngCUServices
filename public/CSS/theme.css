@@ -1,9 +1,11 @@
 * { box-sizing:border-box; }
 
-@font-face {
+/* import "../../dist/" */
+
+/* @font-face {
 	font-family: myFirstFont;
 	src: url(../FONT/FannieThin.ttf);
-  }
+  } */
 
 body {
 	font-family: myFirstFont;

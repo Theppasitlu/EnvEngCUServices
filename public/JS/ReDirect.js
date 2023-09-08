@@ -1,0 +1,1 @@
+import ImageEnv from "../PICTURE/3_0.png"

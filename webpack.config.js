@@ -1,24 +1,10 @@
-// const path = require("path");
-
-// module.exports = {
-//     mode: "development",
-//     devtool: "eval-source-map",
-//     entry: "./public/JS/LearnWebPack.js",
-//     output: {
-//         path: path.resolve(__dirname, "dist"),
-//         filename: "bundle.js"
-//     }
-// };
-
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const path = require("path");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 
 module.exports = {
-  mode: 'development',
+  // mode: 'development',
+  mode: 'production',
   devtool: 'eval-source-map',
   entry: {
     PopUpTest : "./public/JS/PopUpTest.js",
@@ -41,12 +27,21 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: './public/FONT',
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ],
+        type: 'asset/resource',
       },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: './public/PICTURE',
+      { 
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/i,
+        type: 'asset/resource',
       },
     ]
     },
@@ -65,6 +60,10 @@ module.exports = {
       template: "./public/PopUpTest.html",
       filename: "PopUpTest.html",
       chuncks: ["PopUpTest"],
+    }), 
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      filename: "index.html",
     }), 
     new HtmlWebpackPlugin({
       template: "./public/ReDirect.html",
