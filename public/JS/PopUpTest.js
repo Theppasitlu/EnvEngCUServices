@@ -1,4 +1,5 @@
 import '../CSS/theme.css';
+import FontEnv from "../FONT/FannieThin.ttf"
 
 import { 
     hideLoginError, 
@@ -10,6 +11,12 @@ import {
     btnSignup,
     btnLogout
   } from './ui.js'
+
+const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
+MyCustomFont.load().then((F0nt) => {
+  document.fonts.add(F0nt);
+  appContainer.style.fontFamily = "VarCustomFont";
+});
 
 import { initializeApp } from "firebase/app";
 import { 
