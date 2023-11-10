@@ -51,6 +51,15 @@ auth.languageCode = 'th';
 // const snapshot = await getDocs(todosCol);
 const provider = new GoogleAuthProvider();
 
+/* global bootstrap: false */
+(function () {
+  'use strict'
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+
 const InIN = async () => {
   const userCredential = await signInWithPopup(auth, provider)
   .then((result) => {
@@ -75,7 +84,6 @@ const InIN = async () => {
   console.log("สวัสดี");
 }
 btnUP.addEventListener("click", InIN)
-Hello.addEventListener("click", InIN)
 
   // Log out
 const logout = async () => {

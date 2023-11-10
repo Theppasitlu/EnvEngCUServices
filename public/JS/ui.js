@@ -40,8 +40,10 @@ export const showLoginError = (error) => {
 }
 
 export const showLoginState = (user) => {
-  lblAuthName.innerHTML = `You're logged in as ${user.displayName}. `
-  lblAuthUID.innerHTML = `uid: ${user.uid}`
+  lblAuthName.innerHTML = `${user.displayName} `
+  lblAuthUID.innerHTML = `${user.uid}`
+  lblAuthEmail.innerHTML = `${user.email}`
+  lblAuthLast.innerHTML = `${user.metadata.lastSignInTime}`
   lblAuthPicture.innerHTML = `<img src=${user.photoURL}>`
 }
 
