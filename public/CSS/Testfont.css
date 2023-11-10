@@ -1,0 +1,10 @@
+@font-face {
+	font-family: myFirstFont;
+	src: url(../FONT/wasjindaArluxFONT.ttf);
+  }
+
+body {
+	font-family: myFirstFont;
+	background: #eee;
+  -webkit-font-smoothing: antialiased;
+}
