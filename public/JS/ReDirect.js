@@ -1,2 +1,10 @@
-import ImageEnv from "../PICTURE/3_0.png"
-import FontEnv from "../FONT/FannieThin.ttf"
+HelloBtn.addEventListener('click', () => {console.log("Click")})
+
+let wait = true;
+let Loog = true;
+if (wait && Loog) {
+    console.log("Waitingas");
+}
+
+const Hell = document.querySelector('#hello');
+console.log(Hell);

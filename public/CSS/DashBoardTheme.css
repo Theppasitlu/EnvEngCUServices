@@ -1,6 +1,6 @@
 @font-face {
 	font-family: myFirstFont;
-	src: url(../FONT/wasjindaArluxFONT.ttf);
+	src: url(../FONT/wasjindaArluxFONT.ttf) format('truetype');
   }
 
 

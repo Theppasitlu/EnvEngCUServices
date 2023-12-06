@@ -1,22 +1,26 @@
-import '../CSS/theme.css';
-import FontEnv from "../FONT/FannieThin.ttf"
+import "../CSS/IndexTheme.css";
+
+// import FontEnv from "../FONT/FannieThin.ttf"
 
 import { 
-    hideLoginError, 
-    showLoginState, 
-    showLoginForm, 
-    showApp, 
-    showLoginError, 
-    btnLogin,
-    btnSignup,
-    btnLogout
+  SignInBTN,
+  SignOutBTN,
+  showLoginState,
+  // hideLoginError, 
+  // showLoginForm, 
+  // showApp, 
+  // showLoginError, 
+  // Hell,
   } from './ui.js'
 
-const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
-MyCustomFont.load().then((F0nt) => {
-  document.fonts.add(F0nt);
-  appContainer.style.fontFamily = "VarCustomFont";
-});
+const Hell = document.querySelector('#hello');
+console.log(Hell);
+
+// const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
+// MyCustomFont.load().then((F0nt) => {
+//   document.fonts.add(F0nt);
+//   appContainer.style.fontFamily = "VarCustomFont";
+// });
 
 import { initializeApp } from "firebase/app";
 import { 
@@ -51,6 +55,16 @@ auth.languageCode = 'th';
 // const snapshot = await getDocs(todosCol);
 const provider = new GoogleAuthProvider();
 
+/* global bootstrap: false */
+(() => {
+  'use strict'
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  tooltipTriggerList.forEach((tooltipTriggerEl) => {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})()
+
+let wait = false;
 const InIN = async () => {
   const userCredential = await signInWithPopup(auth, provider)
   .then((result) => {
@@ -71,47 +85,69 @@ const InIN = async () => {
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
   });
-  console.log(result);
+  // console.log(result);
   console.log("สวัสดี");
+  wait = true;
 }
-btnUP.addEventListener("click", InIN)
+SignInBTN.addEventListener("click", InIN)
 
   // Log out
 const logout = async () => {
-    await signOut(auth).then(() => {
-            // Sign-out successful.
-          }).catch((error) => {
-            // An error happened.
-          });
-  }
-btnLogout.addEventListener("click", logout)
+  await signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+  wait = true;
+}
+SignOutBTN.addEventListener("click", logout)
+
+// redirect to login page
+const GoToLogin = async () => {
+  location.href = "index.html"
+}
+// redirect to dashboard page
+// const GoToDashboard = async () => {
+//   location.href = "Learn.html"
+// }
 
 // Monitor auth state
 const monitorAuthState = async () => {
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        console.log(user)
-        showApp()
-        showLoginState(user)
-  
-        hideLoginError()
-        hideLinkError()
-      }
-      else {
-        showLoginForm()
-        lblAuthState.innerHTML = `You're not logged in. นะครับ`
-      }
-    });
-  }
+  onAuthStateChanged(auth, user => {
+    if (user){
+      console.log(user)
+      console.log(wait)
+
+      showLoginState(user)
+
+      // showApp()
+
+      // hideLoginError()
+      // hideLinkError()
+    }
+    else{
+      // showLoginForm()
+      console.log(user)
+      console.log(wait)
+      
+
+      GoToLogin()
+      console.log("ไม่มีสิทธิ์");
+      // lblAuthState.innerHTML = `You're not logged in. นะครับ`
+    }
+  });
+}
 monitorAuthState();
 
 // ตรวจสอบสิทธิ์การเข้าถึง
-onAuthStateChanged(auth, user => {
-    if(user != null){
-        console.log("เข้าสู่ระบบแล้ว");
-    } else {
-        console.log("ไม่มีสิทธิ์");
-    }
-});
+// onAuthStateChanged(auth, user => {
+//     if(user != null){
+//         console.log("เข้าสู่ระบบแล้ว");
+//     } else {
+//         console.log("ไม่มีสิทธิ์");
+//     }
+// });
 
 console.log("สวัสดีครับ");
+
+console.log(SignInBTN);
