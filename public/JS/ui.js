@@ -1,12 +1,7 @@
 import { AuthErrorCodes } from 'firebase/auth';
 
-export const txtEmail = document.querySelector('#txtEmail')
-export const txtPassword = document.querySelector('#txtPassword')
-
-export const btnLogin = document.querySelector('#btnLogin')
-export const btnSignup = document.querySelector('#btnSignup')
-
-export const btnLogout = document.querySelector('#btnLogout')
+export const SignInBTN = document.querySelector('#SignInButton')
+export const SignOutBTN = document.querySelector('#SignOutButton')
 
 export const divAuthState = document.querySelector('#divAuthState')
 export const lblAuthState = document.querySelector('#lblAuthState')
@@ -24,27 +19,27 @@ export const showApp = () => {
   app.style.display = 'block'
 }
 
-export const hideLoginError = () => {
-  divLoginError.style.display = 'none'
-  lblLoginErrorMessage.innerHTML = ''
-}
+// export const hideLoginError = () => {
+//   divLoginError.style.display = 'none'
+//   lblLoginErrorMessage.innerHTML = ''
+// }
 
-export const showLoginError = (error) => {
-  divLoginError.style.display = 'block'    
-  if (error.code == AuthErrorCodes.INVALID_PASSWORD) {
-    lblLoginErrorMessage.innerHTML = `Wrong password. Try again.`
-  }
-  else {
-    lblLoginErrorMessage.innerHTML = `Error: ${error.message}`      
-  }
-}
+// export const showLoginError = (error) => {
+//   divLoginError.style.display = 'block'    
+//   if (error.code == AuthErrorCodes.INVALID_PASSWORD) {
+//     lblLoginErrorMessage.innerHTML = `Wrong password. Try again.`
+//   }
+//   else {
+//     lblLoginErrorMessage.innerHTML = `Error: ${error.message}`      
+//   }
+// }
 
 export const showLoginState = (user) => {
-  lblAuthName.innerHTML = `${user.displayName} `
-  lblAuthUID.innerHTML = `${user.uid}`
-  lblAuthEmail.innerHTML = `${user.email}`
-  lblAuthLast.innerHTML = `${user.metadata.lastSignInTime}`
-  lblAuthPicture.innerHTML = `<img src=${user.photoURL}>`
+  // lblAuthName.innerHTML = `${user.displayName} `
+  // lblAuthUID.innerHTML = `${user.uid}`
+  // lblAuthEmail.innerHTML = `${user.email}`
+  // lblAuthLast.innerHTML = `${user.metadata.lastSignInTime}`
+  // lblAuthPicture.innerHTML = `<img src=${user.photoURL}>`
 }
 
-hideLoginError()
+// hideLoginError()

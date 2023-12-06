@@ -1,5 +1,5 @@
 import '../CSS/theme.css';
-import FontEnv from "../FONT/FannieThin.ttf"
+// import FontEnv from "../FONT/FannieThin.ttf"
 
 import { 
     hideLoginError, 
@@ -12,11 +12,11 @@ import {
     btnLogout
   } from './ui.js'
 
-const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
-MyCustomFont.load().then((F0nt) => {
-  document.fonts.add(F0nt);
-  appContainer.style.fontFamily = "VarCustomFont";
-});
+// const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
+// MyCustomFont.load().then((F0nt) => {
+//   document.fonts.add(F0nt);
+//   appContainer.style.fontFamily = "VarCustomFont";
+// });
 
 import { initializeApp } from "firebase/app";
 import { 
@@ -52,10 +52,10 @@ auth.languageCode = 'th';
 const provider = new GoogleAuthProvider();
 
 /* global bootstrap: false */
-(function () {
+(() => {
   'use strict'
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+  tooltipTriggerList.forEach((tooltipTriggerEl) => {
     new bootstrap.Tooltip(tooltipTriggerEl)
   })
 })()
@@ -95,6 +95,11 @@ const logout = async () => {
   }
 btnLogout.addEventListener("click", logout)
 
+// redirect to login page
+const GoToLogin = async () => {
+  // location.href = "PopUpTest.html"
+}
+
 // Monitor auth state
 const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
@@ -108,19 +113,21 @@ const monitorAuthState = async () => {
       }
       else {
         showLoginForm()
-        lblAuthState.innerHTML = `You're not logged in. นะครับ`
+        GoToLogin()
+        console.log("ไม่มีสิทธิ์");
+        // lblAuthState.innerHTML = `You're not logged in. นะครับ`
       }
     });
   }
 monitorAuthState();
 
 // ตรวจสอบสิทธิ์การเข้าถึง
-onAuthStateChanged(auth, user => {
-    if(user != null){
-        console.log("เข้าสู่ระบบแล้ว");
-    } else {
-        console.log("ไม่มีสิทธิ์");
-    }
-});
+// onAuthStateChanged(auth, user => {
+//     if(user != null){
+//         console.log("เข้าสู่ระบบแล้ว");
+//     } else {
+//         console.log("ไม่มีสิทธิ์");
+//     }
+// });
 
 console.log("สวัสดีครับ");

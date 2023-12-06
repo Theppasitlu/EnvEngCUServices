@@ -7,9 +7,11 @@ module.exports = {
   mode: 'production',
   devtool: 'eval-source-map',
   entry: {
+    PopUp : "./public/JS/PopUp.js",
     PopUpTest : "./public/JS/PopUpTest.js",
     ReDirect : "./public/JS/ReDirect.js",
     DashBoard : "./public/JS/DashBoard.js",
+    SideBars : "./public/JS/SideBars.js",
     ui : "./public/JS/ui.js",
   },
   output: {
@@ -60,6 +62,11 @@ module.exports = {
       template: "./public/DashBoard.html",
       filename: "DashBoard.html",
       chuncks: ["DashBoard"],
+    }), 
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      filename: "index.html",
+      chuncks: ["PopUp"],
     }), 
     new HtmlWebpackPlugin({
       template: "./public/PopUpTest.html",
