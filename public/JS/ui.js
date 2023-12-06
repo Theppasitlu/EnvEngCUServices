@@ -2,6 +2,7 @@ import { AuthErrorCodes } from 'firebase/auth';
 
 export const SignInBTN = document.querySelector('#SignInButton')
 export const SignOutBTN = document.querySelector('#SignOutButton')
+export const SignOutBan = document.querySelector('#SignOutBanner')
 
 export const divAuthState = document.querySelector('#divAuthState')
 export const lblAuthState = document.querySelector('#lblAuthState')
@@ -35,11 +36,11 @@ export const showApp = () => {
 // }
 
 export const showLoginState = (user) => {
-  // lblAuthName.innerHTML = `${user.displayName} `
-  // lblAuthUID.innerHTML = `${user.uid}`
-  // lblAuthEmail.innerHTML = `${user.email}`
-  // lblAuthLast.innerHTML = `${user.metadata.lastSignInTime}`
-  // lblAuthPicture.innerHTML = `<img src=${user.photoURL}>`
+  lblAuthName.innerHTML = `${user.displayName} `
+  lblAuthUID.innerHTML = `${user.uid}`
+  lblAuthEmail.innerHTML = `${user.email}`
+  lblAuthLast.innerHTML = `${user.metadata.lastSignInTime}`
+  lblAuthPicture.innerHTML = `<img src=${user.photoURL}>`
 }
 
 // hideLoginError()

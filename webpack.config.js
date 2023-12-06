@@ -10,6 +10,7 @@ module.exports = {
     PopUp : "./public/JS/PopUp.js",
     PopUpTest : "./public/JS/PopUpTest.js",
     ReDirect : "./public/JS/ReDirect.js",
+    AdminTest : "./public/JS/AdminTest.js",
     DashBoard : "./public/JS/DashBoard.js",
     SideBars : "./public/JS/SideBars.js",
     ui : "./public/JS/ui.js",

@@ -3,8 +3,9 @@ import "../CSS/IndexTheme.css";
 // import FontEnv from "../FONT/FannieThin.ttf"
 
 import { 
-  SignInBTN,
+  // SignInBTN,
   SignOutBTN,
+  SignOutBan,
   showLoginState,
   // hideLoginError, 
   // showLoginForm, 
@@ -13,8 +14,6 @@ import {
   // Hell,
   } from './ui.js'
 
-const Hell = document.querySelector('#hello');
-console.log(Hell);
 
 // const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
 // MyCustomFont.load().then((F0nt) => {
@@ -64,32 +63,6 @@ const provider = new GoogleAuthProvider();
   })
 })()
 
-let wait = false;
-const InIN = async () => {
-  const userCredential = await signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
-  // console.log(result);
-  console.log("สวัสดี");
-  wait = true;
-}
-SignInBTN.addEventListener("click", InIN)
 
   // Log out
 const logout = async () => {
@@ -98,25 +71,21 @@ const logout = async () => {
   }).catch((error) => {
     // An error happened.
   });
-  wait = true;
 }
 SignOutBTN.addEventListener("click", logout)
+SignOutBanner.addEventListener("click", logout)
 
 // redirect to login page
 const GoToLogin = async () => {
   location.href = "index.html"
 }
-// redirect to dashboard page
-// const GoToDashboard = async () => {
-//   location.href = "Learn.html"
-// }
+
 
 // Monitor auth state
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
     if (user){
       console.log(user)
-      console.log(wait)
 
       showLoginState(user)
 
@@ -128,7 +97,6 @@ const monitorAuthState = async () => {
     else{
       // showLoginForm()
       console.log(user)
-      console.log(wait)
       
 
       GoToLogin()
@@ -149,5 +117,3 @@ monitorAuthState();
 // });
 
 console.log("สวัสดีครับ");
-
-console.log(SignInBTN);

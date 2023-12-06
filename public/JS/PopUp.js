@@ -5,7 +5,7 @@ import "../CSS/IndexTheme.css";
 import { 
   SignInBTN,
   SignOutBTN,
-  showLoginState,
+  // showLoginState,
   // hideLoginError, 
   // showLoginForm, 
   // showApp, 
@@ -64,7 +64,6 @@ const provider = new GoogleAuthProvider();
   })
 })()
 
-let wait = false;
 const InIN = async () => {
   const userCredential = await signInWithPopup(auth, provider)
   .then((result) => {
@@ -87,25 +86,10 @@ const InIN = async () => {
   });
   // console.log(result);
   console.log("สวัสดี");
-  wait = true;
 }
 SignInBTN.addEventListener("click", InIN)
 
-  // Log out
-const logout = async () => {
-  await signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-  wait = true;
-}
-SignOutBTN.addEventListener("click", logout)
 
-// redirect to login page
-// const GoToLogin = async () => {
-//   location.href = "index.html"
-// }
 // redirect to dashboard page
 const GoToDashboard = async () => {
   location.href = "Learn.html"
@@ -117,7 +101,7 @@ const monitorAuthState = async () => {
     if (user){
       console.log(user)
 
-      showLoginState(user)
+      // showLoginState(user)
       GoToDashboard()
 
       // showApp()
@@ -127,7 +111,6 @@ const monitorAuthState = async () => {
     else{
       // showLoginForm()
       console.log(user)
-      console.log(wait)
       
       console.log("ไม่มีสิทธิ์");
       // lblAuthState.innerHTML = `You're not logged in. นะครับ`
