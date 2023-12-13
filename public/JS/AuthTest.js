@@ -1,14 +1,21 @@
 import '../CSS/theme.css';
-import { 
-    hideLoginError, 
-    showLoginState, 
-    showLoginForm, 
-    showApp, 
-    showLoginError, 
-    btnLogin,
-    btnSignup,
-    btnLogout
-  } from './ui.js'
+// import { 
+//     hideLoginError, 
+//     showLoginState, 
+//     showLoginForm, 
+//     showApp, 
+//     showLoginError, 
+//     btnLogin,
+//     btnSignup,
+//     btnLogout
+//   } from './ui.js'
+
+// var admin = require("firebase-admin");
+// var serviceAccount = require("./cuengenv-firebase-adminsdk-lcjkt-6afb861236.json");
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
+
 
 import { initializeApp } from "firebase/app";
 import { 
@@ -36,12 +43,29 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
+const FireStore = getFirestore();
 auth.languageCode = 'th';
+
 // connectAuthEmulator(auth, "http://localhost:9099");
 // const db = getAuth(firebaseApp);
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
 const provider = new GoogleAuthProvider();
+
+// จัดการฐานข้อมูล
+const UserData = doc(FireStore, "user/Data")
+// const ChidDoc = doc(UserData, "User/Chid")
+
+const AddAdmin = () => {
+  const TempData = {
+    Name : "name",
+    Number : "หมายเลข",
+    GPX : "เกรดเฉลี่ยสะสม"
+  }
+  SetDoc(UserData, TempData);
+}
+AddAdmin();
+
 
 const InIN = async () => {
   const userCredential = await signInWithPopup(auth, provider)

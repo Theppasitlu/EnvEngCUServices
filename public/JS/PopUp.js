@@ -4,17 +4,14 @@ import "../CSS/IndexTheme.css";
 
 import { 
   SignInBTN,
-  SignOutBTN,
+  // SignOutBTN,
   // showLoginState,
   // hideLoginError, 
   // showLoginForm, 
   // showApp, 
   // showLoginError, 
-  // Hell,
   } from './ui.js'
 
-const Hell = document.querySelector('#hello');
-console.log(Hell);
 
 // const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
 // MyCustomFont.load().then((F0nt) => {
@@ -32,7 +29,7 @@ import {
     // signInWithRedirect, 
     // connectAuthEmulator,
     } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+// import { getFirestore } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -47,9 +44,9 @@ const firebaseConfig = {
   };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth();
-auth.languageCode = 'th';
-// connectAuthEmulator(auth, "http://localhost:9099");
+const Auth = getAuth();
+Auth.languageCode = 'th';
+// connectAuthEmulator(Auth, "http://localhost:9099");
 // const db = getAuth(firebaseApp);
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
@@ -65,7 +62,7 @@ const provider = new GoogleAuthProvider();
 })()
 
 const InIN = async () => {
-  const userCredential = await signInWithPopup(auth, provider)
+  const userCredential = await signInWithPopup(Auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -97,7 +94,7 @@ const GoToDashboard = async () => {
 
 // Monitor auth state
 const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
+  onAuthStateChanged(Auth, user => {
     if (user){
       console.log(user)
 
@@ -120,15 +117,4 @@ const monitorAuthState = async () => {
 }
 monitorAuthState();
 
-// ตรวจสอบสิทธิ์การเข้าถึง
-// onAuthStateChanged(auth, user => {
-//     if(user != null){
-//         console.log("เข้าสู่ระบบแล้ว");
-//     } else {
-//         console.log("ไม่มีสิทธิ์");
-//     }
-// });
-
 console.log("สวัสดีครับ");
-
-console.log(SignInBTN);

@@ -73,7 +73,7 @@ const logout = async () => {
   });
 }
 SignOutBTN.addEventListener("click", logout)
-SignOutBanner.addEventListener("click", logout)
+SignOutBan.addEventListener("click", logout)
 
 // redirect to login page
 const GoToLogin = async () => {

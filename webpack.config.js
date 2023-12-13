@@ -10,8 +10,10 @@ module.exports = {
     PopUp : "./public/JS/PopUp.js",
     PopUpTest : "./public/JS/PopUpTest.js",
     ReDirect : "./public/JS/ReDirect.js",
+    RegisterProfile : "./public/JS/RegisterProfile.js",
     AdminTest : "./public/JS/AdminTest.js",
     DashBoard : "./public/JS/DashBoard.js",
+    UserProfile : "./public/JS/UserProfile.js",
     SideBars : "./public/JS/SideBars.js",
     ui : "./public/JS/ui.js",
   },
@@ -67,6 +69,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
       filename: "index.html",
+      chuncks: ["PopUp"],
+    }), 
+    new HtmlWebpackPlugin({
+      template: "./public/Register.html",
+      filename: "Register.html",
+      chuncks: ["RegisterProfile"],
+    }), 
+    new HtmlWebpackPlugin({
+      template: "./public/Learn.html",
+      filename: "Learn.html",
       chuncks: ["PopUp"],
     }), 
     new HtmlWebpackPlugin({
