@@ -8,7 +8,7 @@
 
 body {
 	font-family: myFirstFont;
-	background: #eee;
+	/* background: #eee; */
   -webkit-font-smoothing: antialiased;
 }
 

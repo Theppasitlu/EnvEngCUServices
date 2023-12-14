@@ -9,7 +9,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/542deac178.js" crossorigin="anonymous"></script>
-  <script type="module" src="/dist/SideBars.bundle.js"></script>
 
   <script type="module" src="/dist/RegisterProfile.bundle.js"></script>
 </head>
@@ -74,193 +73,96 @@
     </symbol>
   </svg>
   
-  <main>
-
-    <h1 class="visually-hidden">Form Sidebars examples</h1>
-    <div class="b-example-divider"></div>
-    <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
-      <a href="/" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right">
-        <svg class="bi" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-        <span class="visually-hidden">Icon-only</span>
-      </a>
-      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-        <li class="nav-item">
-          <a href="#" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="nav-link py-3 active border-bottom" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
-            <svg class="bi" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
-          </a>
-        </li>
-      </ul>
-      <div class="dropdown border-top">
-        <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-          <div id="lblAuthPicture" class="authlabel"></div>
-          <!-- <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle"> -->
-        </a>
-        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-          <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><hr class="dropdown-divider"></li> -->
-          <li><a class="dropdown-item" id="SignOutBanner">Sign out</a></li>
-        </ul>
+  <!-- !พื้นที่ทำงาน -->
+  <div class="container-xxl">
+    <div class="row">
+      <div class="col-2">
+        <nav id="NavbarScrollspy" class="h-100 flex-column align-items-stretch pe-4 border-end">
+          <nav class="nav nav-pills flex-column nav-tabs">
+            <a class="nav-link" href="">Item 1</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ms-3 my-1 " href="#">Item 1-1</a>
+              <a class="nav-link ms-3 my-1" href="#">Item 1-2</a>
+            </nav>
+            <a class="nav-link" href="#item-2">Item 2</a>
+            <a class="nav-link" href="#item-3">Item 3</a>
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
+              <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
+            </nav>
+          </nav>
+        </nav>
       </div>
-    </div>
-    <div class="b-example-divider"></div>
     
-    <!-- !พื้นที่ทำงาน -->
-    <div class="container-xxl">
-     
-      <table class="table">
-        <thead class="table-group-divider">
-          <div class="display-3 mt-5 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
-        </thead>
-        <tbody class="table-group-divider">
-          <tr>
-            <th>
-              <label for="exampleDataList" class="form-label">Datalist example</label>
-              <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-              <datalist id="datalistOptions">
-                <option value="San Francisco">
-                <option value="New York">
-                <option value="Seattle">
-                <option value="Los Angeles">
-                <option value="Chicago">
-              </datalist>
-              
-              <div class="row my-5"></div>
-
-              <form class="row g-3 justify-content-md-center">
-                <div class="col-md-5 position-relative">
-                  <div class="input-group mb-3">
-                    <label for="FirstNameInPut" class="input-group-text"><label for="FirstNameInPut" class="fa-regular fa-user fa-bounce" style="color: #880707;"></label></label>
-                    <div class="form-floating">
-                      <input id="FirstNameInPut" placeholder="" type="text" class="form-control" required>
-                      <label for="">First name</label>
-                      <div class="invalid-tooltip">Please fill out First name field!</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 position-relative">
-                  <label for="validationTooltip05" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="validationTooltip05" required>
-                  <div class="invalid-tooltip">
-                    Please provide a valid zip.
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Submit form</button>
-                </div>
-              </form>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-      
-
-      <div class="display-4 mt-5 start">นิสิต</div>
-      <table class="table table-striped">
-        <tbody class="table-group-divider">
-          <tr>
-            <th scope="row"></th>
-            <td>Name</td>
-            <td><div id="lblAuthName" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>UID</td>
-            <td><div id="lblAuthUID" class="authlabel"></div></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>Email</td>
-            <td><div id="lblAuthEmail" class="authlabel"></div></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>เบอร์โทรศัพท์</td>
-            <td><div id="lblTelephone" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>เกรดเฉลี่ยสะสม</td>
-            <td><div id="lblGPAX" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>lastSignIn</td>
-            <td><div id="lblAuthLast" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>อาจารย์ที่ปรึกษา</td>
-            <td><div id="lblAdvisor" class="authlabel"></div></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>อีเมลอาจารย์ที่ปรึกษา</td>
-            <td><div id="lblAdvisorEmail" class="authlabel"></div></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>ระดับ</td>
-            <td><div id="lblLevel" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>ชั้นปี</td>
-            <td><div id="lblYear" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-          <tr>
-            <th scope="row"></th>
-            <td>สังกัด</td>
-            <td><div id="lblAffiliation" class="authlabel"></div></td>
-            <td>Edit</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row align-items-center">
-        <div class="col"></div>
-        <div class="col-md-auto my-5 py-5">
-          <button id="SignOutButton" class="google-sign-in-button" type="button">
-            Sign out
-          </button>
+      <div class="col-10">
+        <div data-bs-spy="scroll" data-bs-target="#NavbarScrollspy" data-bs-smooth-scroll="true" class="" tabindex="0">
+          <div id="item-3">
+            <table class="table">
+              <thead class="table-group-divider">
+                <div class="display-3 mt-5 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th>
+                    <form class="">
+                      <div class="row justify-content-md-center">
+                        <div class="col-md-4">
+                          <div class="input-group mb-3">
+                            <label for="FirstNameInPut" class="input-group-text"><label for="FirstNameInPut" class="fa-solid fa-signature fa-shake" style="color: #880707; width:20px;"></label></label>
+                            <div class="form-floating">
+                              <input id="FirstNameInPut" placeholder="" type="text" class="form-control" required>
+                              <label for="">First name</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="input-group mb-3">
+                            <label for="LastNameInPut" class="input-group-text"><label for="LastNameInPut" class="fa-solid fa-people-roof fa-flip" style="color: #880707; width:20px;"></label></label>
+                            <div class="form-floating">
+                              <input id="LastNameInPut" placeholder="" type="text" class="form-control" required>
+                              <label for="">Surname</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="row justify-content-md-center"> 
+                        <div class="col-md-4">
+                          <div class="input-group mb-3">
+                            <label for="PhoneInPut" class="input-group-text"><label for="PhoneInPut" class="fa-solid fa-mobile-screen fa-beat" style="color: #880707; width:20px;"></label></label>
+                            <div class="form-floating">
+                              <input id="PhoneInPut" placeholder="" type="text" class="form-control" required>
+                              <label for="">Telephone</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="input-group mb-3">
+                            <label for="BirthInPut" class="input-group-text"><label for="BirthInPut" class="fa-solid fa-cake-candles fa-bounce" style="color: #880707; width:20px;"></label></label>
+                            <div class="form-floating">
+                              <input id="BirthInPut" placeholder="" type="date" class="form-control" required >
+                              <label for="">Date of birth</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                          <button class="btn btn-success" type="submit">Submit form</button>
+                        </div>
+                      </div>
+                    </form>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <div class="col"></div>        
       </div>
     </div>
+    
+    
+  </div>
 
-  </main>
-
-  
-  
 </body>
 </html>
