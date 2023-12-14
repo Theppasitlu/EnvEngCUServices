@@ -99,12 +99,18 @@
           <div id="item-3">
             <table class="table">
               <thead class="table-group-divider">
-                <div class="display-3 mt-5 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
+                <div class="row">
+                  <div class="col-8 display-3 mt-4 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
+                  <div id="lblAuthPicture" class="authlabel text-end col-2"></div>
+                  <div class="col-2 mt-4"><button id="SignOutButton" class="google-sign-in-button" type="button">
+                    Sign out
+                  </button></div>
+                </div>
               </thead>
               <tbody class="table-group-divider">
                 <tr>
                   <th>
-                    <form class="">
+                    <form id="RegisterMyProfile" onsubmit="() => {alert('');}">
                       <div class="row justify-content-md-center">
                         <div class="col-md-4">
                           <div class="input-group mb-3">
@@ -145,6 +151,11 @@
                           </div>
                         </div>
                       </div>
+                      <div id="lblAuthName" class="authlabel"></div>
+                      <div id="lblAuthUID" class="authlabel"></div>
+                      <div id="lblAuthEmail" class="authlabel"></div>
+                      <div id="lblAuthLast" class="authlabel"></div>
+                      
                       <div class="row mt-4">
                         <div class="col-2"></div>
                         <div class="col-8">
