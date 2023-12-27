@@ -76,33 +76,77 @@
   <!-- !พื้นที่ทำงาน -->
   <div class="container-xxl">
     <div class="row">
-      <div class="col-2">
-        <nav id="NavbarScrollspy" class="h-100 flex-column align-items-stretch pe-4 border-end">
-          <nav class="nav nav-pills flex-column nav-tabs">
-            <a class="nav-link" href="">Item 1</a>
-            <nav class="nav nav-pills flex-column">
-              <a class="nav-link ms-3 my-1 " href="#">Item 1-1</a>
-              <a class="nav-link ms-3 my-1" href="#">Item 1-2</a>
-            </nav>
-            <a class="nav-link" href="#item-2">Item 2</a>
-            <a class="nav-link" href="#item-3">Item 3</a>
-            <nav class="nav nav-pills flex-column">
-              <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
-              <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
-            </nav>
-          </nav>
+      <div class="col-3">   <!-- !NavbarScrollspy -->
+        <nav id="NavbarScrollspy" class="h-100 flex-column align-items-stretch pe-4 border-end navbar navbar-expand-lg">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#OffCanVasNavBar" aria-controls="OffCanVasNavBar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="OffCanVasNavBar" aria-labelledby="OffCanVasNavBarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="OffCanVasNavBarLabel">EngEnviChula</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">    <!-- !offcanvas-body -->
+              <nav class="nav nav-pills flex-column nav-tabs">
+                <a class="nav-link"  href="" aria-current="page">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Home
+                </a>
+                <a class="nav-link" href="#Services">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#grid"/></svg>
+                  Services
+                </a>
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3 my-1" href="#LabEquip">
+                    <i class="me-2 fa-solid fa-flask-vial" style="color: #511f1f;"></i>
+                    Lab equipment</a>
+                  <a class="nav-link ms-3 my-1" href="#BookRoom">
+                    <svg class="ms-1 bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    Reserve a room</a>
+                  <a class="nav-link ms-3 my-1" href="#Request">
+                    <i class="ms-2 me-2 fa-solid fa-file-waveform" style="color: #511f1f;"></i>
+                    Forms</a>
+                </nav>
+                <a class="nav-link" href="#Status">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                  Status
+                </a>
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3 my-1" href="#Return">
+                    <i class="me-2 fa-solid fa-flask" style="color: #511f1f;"></i>
+                    Return</a>
+                  <a class="nav-link ms-3 my-1" href="#ChangRoom">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    ChangRoom</a>
+                </nav>
+                <a class="nav-link" href="#Profile">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                  Profile
+                </a>
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3 my-1" href="#Register">
+                    <i class="me-2 fa-regular fa-address-card" style="color: #511f1f;"></i>
+                    Register</a>
+                </nav>
+                <a class="nav-link" href="#QAndA">
+                  <i class="fa-solid fa-question me-2" style="color: #15181e;"></i>
+                  Q&A
+                </a>
+              </nav>
+            </div>
+          </div>
         </nav>
       </div>
     
-      <div class="col-10">
+      <div class="col-9">
         <div data-bs-spy="scroll" data-bs-target="#NavbarScrollspy" data-bs-smooth-scroll="true" class="" tabindex="0">
-          <div id="item-3">
+          <div id="Register">
             <table class="table">
               <thead class="table-group-divider">
-                <div class="row">
+                <div class="row justify-content-end">
                   <div class="col-8 display-3 mt-4 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
-                  <div id="lblAuthPicture" class="authlabel text-end col-2"></div>
-                  <div class="col-2 mt-4"><button id="SignOutButton" class="google-sign-in-button" type="button">
+                  <div id="lblAuthPicture" class="authlabel text-end col-1"></div>
+                  <div class="col-3 mt-4 text-end"><button id="SignOutButton" class="google-sign-in-button" type="button">
                     Sign out
                   </button></div>
                 </div>

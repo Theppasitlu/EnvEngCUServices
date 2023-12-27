@@ -75,7 +75,16 @@ const provider = new GoogleAuthProvider();
 })()
 
 // จัดการฐานข้อมูล
-// const UserCollection = collection(FireStore, "ข้อมูลส่วนตัว");
+const UserCollection = collection(FireStore, "ข้อมูลส่วนตัว");
+
+const AddNewUser = async (AddUID, AddName, AddTel, AddBirthDay) => {
+    const NewDoc = await addDoc(UserCollection, {
+        ชื่อ_นามสกุล : AddName,
+        หมายเลขโทรศัพท์ : AddTel,
+        วันเดือนปีเกิด : AddBirthDay
+    });
+    console.log(`ผู้ใช้งานใหม่เพิ่มที่ ${NewDoc.path}`);
+}
 
 // *Log out
 const logout = async () => {
@@ -117,6 +126,8 @@ const monitorAuthState = async () => {
 monitorAuthState();
 console.log("เว็บไซต์นี้เขียนโดยเทพสิทธิ์ เหลืองศิริธัญญะ");
 
+
+
 const MyReForm = document.getElementById("RegisterMyProfile")
 MyReForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -126,6 +137,8 @@ MyReForm.addEventListener("submit", (e) => {
   const MyPhone = document.getElementById("PhoneInPut")
 
   console.log(MyFirstName.value)
+  console.log(MyLastName.value)
+  console.log(MyPhone.value)
 
 })
 

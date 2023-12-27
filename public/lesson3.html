@@ -9,7 +9,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/542deac178.js" crossorigin="anonymous"></script>
-  <script type="module" src="/dist/SideBars.bundle.js"></script>
 
   <script type="module" src="/dist/RegisterProfile.bundle.js"></script>
 </head>
@@ -76,164 +75,99 @@
   
   <!-- !พื้นที่ทำงาน -->
   <div class="container-xxl">
-    
-    <table class="table">
-      <thead class="table-group-divider">
-        <div class="display-3 mt-5 mb-1">โปรดกรอกข้อมูลส่วนตัว</div>
-      </thead>
-      <tbody class="table-group-divider">
-        <tr>
-          <th>
-            <label for="exampleDataList" class="form-label">Datalist example</label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-            <datalist id="datalistOptions">
-              <option value="San Francisco">
-              <option value="New York">
-              <option value="Seattle">
-              <option value="Los Angeles">
-              <option value="Chicago">
-            </datalist>
-            
-            <div class="row my-5"></div>
-
-            <form class="">
-              <div class="row justify-content-md-center">
-                <div class="col-md-4">
-                  <div class="input-group mb-3">
-                    <label for="FirstNameInPut" class="input-group-text"><label for="FirstNameInPut" class="fa-solid fa-signature fa-shake" style="color: #880707; width:20px;"></label></label>
-                    <div class="form-floating">
-                      <input id="FirstNameInPut" placeholder="" type="text" class="form-control" required>
-                      <label for="">First name</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="input-group mb-3">
-                    <label for="LastNameInPut" class="input-group-text"><label for="LastNameInPut" class="fa-solid fa-people-roof fa-flip" style="color: #880707; width:20px;"></label></label>
-                    <div class="form-floating">
-                      <input id="LastNameInPut" placeholder="" type="text" class="form-control" required>
-                      <label for="">Surname</label>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-              <div class="row justify-content-md-center"> 
-                <div class="col-md-4">
-                  <div class="input-group mb-3">
-                    <label for="PhoneInPut" class="input-group-text"><label for="PhoneInPut" class="fa-solid fa-mobile-screen fa-beat" style="color: #880707; width:20px;"></label></label>
-                    <div class="form-floating">
-                      <input id="PhoneInPut" placeholder="" type="text" class="form-control" required>
-                      <label for="">Telephone</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="input-group mb-3">
-                    <label for="BirthInPut" class="input-group-text"><label for="BirthInPut" class="fa-solid fa-cake-candles fa-bounce" style="color: #880707; width:20px;"></label></label>
-                    <div class="form-floating">
-                      <input id="BirthInPut" placeholder="" type="date" class="form-control" required>
-                      <label for="">Date of birth</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                  <button class="btn btn-primary" type="submit">Submit form</button>
-                </div>
-              </div>
-            </form>
-          </th>
-        </tr>
-      </tbody>
-    </table>
-    
-    
-
-    <div class="display-4 mt-5 start">นิสิต</div>
-    <table class="table table-striped">
-      <tbody class="table-group-divider">
-        <tr>
-          <th scope="row"></th>
-          <td>Name</td>
-          <td><div id="lblAuthName" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>UID</td>
-          <td><div id="lblAuthUID" class="authlabel"></div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>Email</td>
-          <td><div id="lblAuthEmail" class="authlabel"></div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>เบอร์โทรศัพท์</td>
-          <td><div id="lblTelephone" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>เกรดเฉลี่ยสะสม</td>
-          <td><div id="lblGPAX" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>lastSignIn</td>
-          <td><div id="lblAuthLast" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>อาจารย์ที่ปรึกษา</td>
-          <td><div id="lblAdvisor" class="authlabel"></div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>อีเมลอาจารย์ที่ปรึกษา</td>
-          <td><div id="lblAdvisorEmail" class="authlabel"></div></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>ระดับ</td>
-          <td><div id="lblLevel" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>ชั้นปี</td>
-          <td><div id="lblYear" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>สังกัด</td>
-          <td><div id="lblAffiliation" class="authlabel"></div></td>
-          <td>Edit</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row align-items-center">
-      <div class="col"></div>
-      <div class="col-md-auto my-5 py-5">
-        <button id="SignOutButton" class="google-sign-in-button" type="button">
-          Sign out
-        </button>
+    <div class="row">
+      <div class="col-3">   <!-- !NavbarScrollspy -->
+        <nav id="NavbarScrollspy" class="h-100 flex-column align-items-stretch pe-4 border-end navbar navbar-expand-lg">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#OffCanVasNavBar" aria-controls="OffCanVasNavBar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="OffCanVasNavBar" aria-labelledby="OffCanVasNavBarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="OffCanVasNavBarLabel">EngEnviChula</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">    <!-- !offcanvas-body -->
+              <nav class="nav nav-pills flex-column nav-tabs">
+                <a class="nav-link"  href="" aria-current="page">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#home"/></svg>
+                  Home
+                </a>
+                <a class="nav-link" href="#Services">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#grid"/></svg>
+                  Services
+                </a>
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3 my-1" href="#LabEquip">
+                    <i class="me-2 fa-solid fa-flask-vial" style="color: #511f1f;"></i>
+                    Lab equipment</a>
+                  <a class="nav-link ms-3 my-1" href="#BookRoom">
+                    <svg class="ms-1 bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    Reserve a room</a>
+                  <a class="nav-link ms-3 my-1" href="#Request">
+                    <i class="ms-2 me-2 fa-solid fa-file-waveform" style="color: #511f1f;"></i>
+                    Forms</a>
+                </nav>
+                <a class="nav-link" href="#Status">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                  Status
+                </a>
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ms-3 my-1" href="#Return">
+                    <i class="me-2 fa-solid fa-flask" style="color: #511f1f;"></i>
+                    Return</a>
+                  <a class="nav-link ms-3 my-1" href="#ChangRoom">
+                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                    ChangRoom</a>
+                </nav>
+                <a class="nav-link" href="#Profile">
+                  <svg class="bi me-1" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+                  Profile
+                </a>
+                <a class="nav-link" href="#QAndA">
+                  <i class="fa-solid fa-question me-2" style="color: #15181e;"></i>
+                  Q&A
+                </a>
+              </nav>
+            </div>
+          </div>
+        </nav>
       </div>
-      <div class="col"></div>        
+    
+      <div class="col-9">
+        <div data-bs-spy="scroll" data-bs-target="#NavbarScrollspy" data-bs-smooth-scroll="true" class="" tabindex="0">
+          <div id="Status">
+            <table class="table">
+              <thead class="table-group-divider">
+                <div class="display-3 mt-5 mb-1">โปรดเข้าสู่ระบบ</div>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr>
+                  <th>
+                    <!-- !พื้นที่ทำงาน -->
+                    <div class="container text-center">
+                      <div class="row align-items-center">
+                        <h1>
+                          
+                        </h1>
+                        
+                        <div class="col"></div>
+                        <div class="col-md-auto my-5 py-5">
+                          <button id="SignInButton" class="google-sign-in-button" type="button">
+                            Sign in with Google
+                          </button>
+                        </div>
+                        <div class="col"></div>
+                      </div>
+                    </div>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </div>  
 
-  
-  
 </body>
 </html>
