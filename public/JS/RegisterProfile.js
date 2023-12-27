@@ -4,7 +4,7 @@ import "../CSS/IndexTheme.css";
 
 import { 
   // SignInBTN,
-  SignOutBan,
+  // SignOutBan,
   SignOutBTN,
   showLoginData,
   // hideLoginError, 
@@ -86,7 +86,6 @@ const logout = async () => {
   });
 }
 SignOutBTN.addEventListener("click", logout)
-SignOutBan.addEventListener("click", logout)
 
 // *redirect to login page
 const GoToLogin = async () => {
@@ -99,7 +98,6 @@ const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
     if (user){
       console.log(user)
-      QueryForDocument(FireStore, user.uid)
       showLoginData(user)
 
       // showApp()
@@ -118,3 +116,20 @@ const monitorAuthState = async () => {
 }
 monitorAuthState();
 console.log("เว็บไซต์นี้เขียนโดยเทพสิทธิ์ เหลืองศิริธัญญะ");
+
+const MyReForm = document.getElementById("RegisterMyProfile")
+MyReForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const MyFirstName = document.getElementById("FirstNameInPut")
+  const MyLastName = document.getElementById("LastNameInPut")
+  const MyPhone = document.getElementById("PhoneInPut")
+
+  console.log(MyFirstName.value)
+
+})
+
+const Submited = async () => {
+  await console.log(document.getElementById("RegisterMyProfile"))
+  alert("The form was submitted");
+}
