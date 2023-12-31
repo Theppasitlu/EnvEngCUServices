@@ -68,6 +68,7 @@ auth.languageCode = 'th';
 const UserData = doc(FireStore, "ข้อมูลส่วนตัว/ทดสอบ")
 // const ChidDoc = doc(UserData, "User/Chid")
 
+// !อัปเดตข้อมูล
 const AddAdmin = async () => {
   const TempData = {
     ชื่อ_นามสกุล : "name",
@@ -89,7 +90,6 @@ const AddAdmin = async () => {
         console.log(`มีข้อผิดพลาด ${error} เกิดขึ้น`);
     });
 }
-
 
 const UserCollection = collection(FireStore, "ข้อมูลส่วนตัว");
 const AddNewUser = async () => {
