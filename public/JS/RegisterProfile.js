@@ -11,8 +11,7 @@ import {
   // showLoginForm, 
   // showApp, 
   // showLoginError,
-  showUserData,
-  QueryForDocument } from './ui.js'
+  showUserData,} from './ui.js'
 
 // const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
 // MyCustomFont.load().then((F0nt) => {
@@ -40,6 +39,7 @@ import {
     where,
     orderBy,
     limit,
+    Timestamp,
     onSnapshot } from "firebase/firestore";
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -56,7 +56,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth();
-const FireStore = getFirestore();
+const GetFireStoreNa = getFirestore();
 auth.languageCode = 'th';
 
 // connectAuthEmulator(auth, "http://localhost:9099");
@@ -64,6 +64,8 @@ auth.languageCode = 'th';
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
 const provider = new GoogleAuthProvider();
+var ProfileData
+var MyFirstName, MyLastName, MyPhone, MyBirthday
 
 /* global bootstrap: false */
 (() => {
@@ -92,25 +94,40 @@ const GoToLogin = async () => {
   location.href = "index.html"
 }
 
+// !เพิ่มข้อมูลส่วนตัว
+
+const AddAdmin = async () => {
+  console.log(MyFirstName, MyLastName, MyPhone, MyBirthday)
+  const TempData = {
+    ชื่อตัว : MyFirstName,
+    นามสกุล : MyLastName,
+    หมายเลขโทรศัพท์ : MyPhone,
+    วันเดือนปีเกิด : Timestamp.fromDate(new Date(MyBirthday)),
+    เลขประจำตัวบัญชี : ProfileData.uid
+  };
+  const UserData = doc(GetFireStoreNa, "ข้อมูลส่วนตัว", ProfileData.uid)
+  setDoc(UserData, TempData, {merge: true})
+  .then( () =>{
+      console.log("อัปเดตข้อมูลเรียบร้อยแล้วน้า");
+  })
+  .catch( (error) =>{
+      console.log(`มีข้อผิดพลาด ${error} เกิดขึ้น`);
+  });
+}
+
 // Monitor auth state
 // *ตรวจสอบสิทธิ์การเข้าถึง
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
     if (user){
-      console.log(user)
       showLoginData(user)
-
-      // showApp()
-      // hideLoginError()
-      // hideLinkError()
+      ProfileData = user
+      QueryForDocument()
     }
     else{
-      // showLoginForm()
       console.log(user)
-      
       GoToLogin()
       console.log("ไม่มีสิทธิ์");
-      // lblAuthState.innerHTML = `You're not logged in. นะครับ`
     }
   });
 }
@@ -121,15 +138,39 @@ const MyReForm = document.getElementById("RegisterMyProfile")
 MyReForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const MyFirstName = document.getElementById("FirstNameInPut")
-  const MyLastName = document.getElementById("LastNameInPut")
-  const MyPhone = document.getElementById("PhoneInPut")
+  MyFirstName = document.getElementById("FirstNameInPut").value
+  MyLastName = document.getElementById("LastNameInPut").value
+  MyPhone = document.getElementById("PhoneInPut").value
+  MyBirthday = document.getElementById("BirthInPut").value
 
-  console.log(MyFirstName.value)
-
+  AddAdmin()
 })
 
 const Submited = async () => {
   await console.log(document.getElementById("RegisterMyProfile"))
   alert("The form was submitted");
+}
+
+// !ย้ายไปหน้าข้อมูลส่วนตัว
+const GoToProfilePage = async () => {
+  location.href = "index.html"
+}
+
+// !ดูว่าลงทะเบียนสำเร็จไหม
+const QueryForDocument = async () => {
+  const UserOrdersQuery = query(
+    collection(GetFireStoreNa, "ข้อมูลส่วนตัว"),
+    where("เลขประจำตัวบัญชี", "==", ProfileData.uid),
+    // orderBy("GPX"),
+    limit(3)
+  );
+  console.log(ProfileData)
+  onSnapshot(UserOrdersQuery, (MyQuerySnapShot) => {
+    // console.log(JSON.stringify(MyQuerySnapShot.docs.map((e) => e.data())));
+    if (MyQuerySnapShot.docs.length != 0){
+      GoToProfilePage()
+    } else {
+      console.log("โปรดลงทะเบียนเข้าใช้งานครั้งแรกก่อน");
+    } 
+  });
 }

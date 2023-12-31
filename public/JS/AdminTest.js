@@ -118,22 +118,6 @@ const ListenToDocument = async () => {
     });
 }
 
-const QueryForDocument = async () => {
-    const UserOrdersQuery = query(
-        collection(FireStore, "ข้อมูลส่วนตัว"),
-        where("Email", "==", "theppasitlu@gmail.com"),
-        // orderBy("GPX"),
-        limit(100)
-    );
-
-    onSnapshot(UserOrdersQuery, (MyQuerySnapShot) => {
-        console.log(JSON.stringify(MyQuerySnapShot.docs.map((e) => e.data())));
-        // MyQuerySnapShot.forEach((Snap) => {
-        //     console.log(`เอกสาร ${Snap.id} บรรจุ ${JSON.stringify(Snap.data())}`);
-        // });
-    });
-}
-
 // AddAdmin();
 // AddNewUser();
 // ReadSingleDocument();
