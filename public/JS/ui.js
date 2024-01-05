@@ -1,17 +1,3 @@
-import { AuthErrorCodes } from 'firebase/auth';
-import { 
-  // getFirestore,
-  // doc,
-  // setDoc,
-  // getDoc,
-  collection,
-  // addDoc,
-  query,
-  where,
-  // orderBy,
-  limit,
-  onSnapshot } from "firebase/firestore";
-
 export const SignInBTN = document.querySelector('#SignInButton')
 export const SignOutBTN = document.querySelector('#SignOutButton')
 export const SignOutBan = document.querySelector('#SignOutBanner')
@@ -47,42 +33,36 @@ export const showLoginError = (error) => {
   }
 }
 
-const GoToRegiser = () => {
-  location.href = "Register.html"
+export const ShowRegister = (ระดับ, ผู้ใช้) => {
+  lblAuthLevel.innerHTML = `${ระดับ}`
+  lblAuthPicture.innerHTML = `<img src=${ผู้ใช้.photoURL}>`
 }
 
-export const showLoginData = (User) => {
-  lblAuthName.innerHTML = `${User.displayName} `
-  lblAuthUID.innerHTML = `${User.uid}`
-  lblAuthEmail.innerHTML = `${User.email}`
-  lblAuthLast.innerHTML = `${User.metadata.lastSignInTime}`
-  lblAuthPicture.innerHTML = `<img src=${User.photoURL}>`
-
+export const ShowProfilePic = (ผู้ใช้) => {
+  lblAuthEmail.innerHTML = `${ผู้ใช้.email}`
+  lblAuthPicture.innerHTML = `<img src=${ผู้ใช้.photoURL}>`
+  // lblAuthUID.innerHTML = `${User.uid}`
+  // lblAuthLast.innerHTML = `${User.metadata.lastSignInTime}`
 }
 
-export const QueryForDocument = async (GetFireStoreNa, UserID) => {
-  const UserOrdersQuery = query(
-    collection(GetFireStoreNa, "ข้อมูลส่วนตัว"),
-    where("เลขประจำตัวบัญชี", "==", UserID),
-    // orderBy("GPX"),
-    limit(3)
-  );
-
-  onSnapshot(UserOrdersQuery, (MyQuerySnapShot) => {
-    // console.log(JSON.stringify(MyQuerySnapShot.docs.map((e) => e.data())));
-    if (MyQuerySnapShot.docs.length != 0){
-      MyQuerySnapShot.forEach((Snap) => {
-        const SnapShotData = Snap.data()
-        lblTelephone.innerHTML = SnapShotData.หมายเลขโทรศัพท์
-        lblGPAX.innerHTML = SnapShotData.เกรดเฉลี่ยสะสม
-        console.log(`เอกสาร ${Snap.id} บรรจุ ${JSON.stringify(SnapShotData)}`);
-      });
-    } else {
-      console.log("โปรดลงทะเบียนเข้าใช้งานครั้งแรกก่อน");
-      GoToRegiser();
-    } 
-  });
+export const ShowUserProfile = (ทั้งหมดล่าสุด) => {
+  // ทั้งหมดล่าสุด.forEach((Snap) => {
+  //   const ข้อมูลล่าสุด = Snap.data()
+  //   lblAuthName.innerHTML = `${ข้อมูลล่าสุด.ชื่อตัว}`+` ${ข้อมูลล่าสุด.นามสกุล}`
+  //   lblAuthUID.innerHTML = `${ข้อมูลล่าสุด.uid}`
+  //   lblTelephone.innerHTML = ข้อมูลล่าสุด.หมายเลขโทรศัพท์
+  //   lblGPAX.innerHTML = ข้อมูลล่าสุด.เกรดเฉลี่ยสะสม
+  //   // console.log(`เอกสาร ${Snap.id} บรรจุ ${JSON.stringify(SnapShotData)}`);
+  // })
+    const ข้อมูลล่าสุด = ทั้งหมดล่าสุด.data()
+    console.log(ข้อมูลล่าสุด)
+    // lblAuthName.innerHTML = `${ข้อมูลล่าสุด.ชื่อตัว}`+` ${ข้อมูลล่าสุด.นามสกุล}`
+    // lblAuthUID.innerHTML = `${ข้อมูลล่าสุด.uid}`
+    // lblTelephone.innerHTML = ข้อมูลล่าสุด.หมายเลขโทรศัพท์
+    // lblGPAX.innerHTML = ข้อมูลล่าสุด.เกรดเฉลี่ยสะสม
+    // console.log(`เอกสาร ${Snap.id} บรรจุ ${JSON.stringify(SnapShotData)}`);
 }
+
 
 
 // hideLoginError()

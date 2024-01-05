@@ -3,16 +3,9 @@ import "../CSS/IndexTheme.css";
 // import FontEnv from "../FONT/FannieThin.ttf"
 
 import { 
-  // SignInBTN,
-  SignOutBan,
   SignOutBTN,
-  showLoginData,
-  // hideLoginError, 
-  // showLoginForm, 
-  // showApp, 
-  // showLoginError,
-  showUserData,
-  QueryForDocument } from './ui.js'
+  ShowUserProfile,
+  } from './ui.js'
 
 // const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
 // MyCustomFont.load().then((F0nt) => {
@@ -20,101 +13,27 @@ import {
 //   appContainer.style.fontFamily = "VarCustomFont";
 // });
 
-import { initializeApp } from "firebase/app";
-import { 
-    getAuth,
-    onAuthStateChanged, 
-    signOut,
-    GoogleAuthProvider, 
-    // signInWithRedirect, 
-    // connectAuthEmulator,
-    signInWithPopup, } from "firebase/auth";
+import {
+  LogOut,
+  MonitorAuthState,
+  QueryForDocument,
+  } from './BasicFunction.js'
+  
 import { 
     getFirestore,
-    doc,
-    setDoc,
-    getDoc,
-    collection,
-    addDoc,
-    query,
-    where,
-    orderBy,
-    limit,
-    onSnapshot } from "firebase/firestore";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyBVTT9A6wUiorP4IeClKMeGkyhS-at7Lg8",
-    authDomain: "cuengenv.firebaseapp.com",
-    projectId: "cuengenv",
-    storageBucket: "cuengenv.appspot.com",
-    messagingSenderId: "824892336924",
-    appId: "1:824892336924:web:a2d9723b09eef4ef0528d9",
-    measurementId: "G-4RM7BHDCC9"
-  };
-
-const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth();
-const FireStore = getFirestore();
-auth.languageCode = 'th';
-
-// connectAuthEmulator(auth, "http://localhost:9099");
-// const db = getAuth(firebaseApp);
-// const todosCol = collection(db, "todos");
-// const snapshot = await getDocs(todosCol);
-const provider = new GoogleAuthProvider();
-
-/* global bootstrap: false */
-(() => {
-  'use strict'
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  tooltipTriggerList.forEach((tooltipTriggerEl) => {
-    new bootstrap.Tooltip(tooltipTriggerEl)
-  })
-})()
-
-// จัดการฐานข้อมูล
-// const UserCollection = collection(FireStore, "ข้อมูลส่วนตัว");
+    } from "firebase/firestore";
+  
+const ติดต่อฐานข้อมูล = getFirestore();
 
 // *Log out
-const logout = async () => {
-  await signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-}
-SignOutBTN.addEventListener("click", logout)
-SignOutBan.addEventListener("click", logout)
-
-// *redirect to login page
-const GoToLogin = async () => {
-  location.href = "index.html"
-}
+SignOutBTN.addEventListener("click", LogOut)
 
 // Monitor auth state
 // *ตรวจสอบสิทธิ์การเข้าถึง
-const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
-    if (user){
-      console.log(user)
-      QueryForDocument(FireStore, user.uid)
-      showLoginData(user)
+MonitorAuthState()
+const เลขผู้ใช้ = sessionStorage.getItem("เลขผู้ใช้") 
+var ข้อมูลส่วนบุคคล = QueryForDocument(ติดต่อฐานข้อมูล, เลขผู้ใช้)
+console.log(ข้อมูลส่วนบุคคล)
+// ShowUserProfile(ข้อมูลส่วนบุคคล)
 
-      // showApp()
-      // hideLoginError()
-      // hideLinkError()
-    }
-    else{
-      // showLoginForm()
-      console.log(user)
-      
-      GoToLogin()
-      console.log("ไม่มีสิทธิ์");
-      // lblAuthState.innerHTML = `You're not logged in. นะครับ`
-    }
-  });
-}
-monitorAuthState();
-console.log("เว็บไซต์นี้เขียนโดยเทพสิทธิ์ เหลืองศิริธัญญะ");
+console.log("เว็บไซต์นี้เขียนโดยเทพสิทธิ์ เหลืองศิริธัญญะ")

@@ -4,20 +4,10 @@ import "../CSS/IndexTheme.css";
 
 import { 
   // SignInBTN,
-  // SignOutBan,
   SignOutBTN,
-  showLoginData,
-  // hideLoginError, 
-  // showLoginForm, 
-  // showApp, 
-  // showLoginError,
-  showUserData,} from './ui.js'
+  ShowRegister,
+  } from './ui.js'
 
-// const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
-// MyCustomFont.load().then((F0nt) => {
-//   document.fonts.add(F0nt);
-//   appContainer.style.fontFamily = "VarCustomFont";
-// });
 
 import { initializeApp } from "firebase/app";
 import { 
@@ -41,6 +31,11 @@ import {
     limit,
     Timestamp,
     onSnapshot } from "firebase/firestore";
+  
+import {
+    LogOut,
+    MonitorAuthState,
+    } from './BasicFunction.js'
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -52,19 +47,19 @@ const firebaseConfig = {
     messagingSenderId: "824892336924",
     appId: "1:824892336924:web:a2d9723b09eef4ef0528d9",
     measurementId: "G-4RM7BHDCC9"
-  };
+    };
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth();
-const GetFireStoreNa = getFirestore();
-auth.languageCode = 'th';
+const ตัวตน = getAuth();
+const ติดต่อฐานข้อมูล = getFirestore();
+ตัวตน.languageCode = 'th';
 
 // connectAuthEmulator(auth, "http://localhost:9099");
 // const db = getAuth(firebaseApp);
 // const todosCol = collection(db, "todos");
 // const snapshot = await getDocs(todosCol);
-const provider = new GoogleAuthProvider();
-var ProfileData
+// const provider = new GoogleAuthProvider();
+var ProfileData, LevelData
 var MyFirstName, MyLastName, MyPhone, MyBirthday
 
 /* global bootstrap: false */
@@ -77,7 +72,7 @@ var MyFirstName, MyLastName, MyPhone, MyBirthday
 })()
 
 // จัดการฐานข้อมูล
-const UserCollection = collection(FireStore, "ข้อมูลส่วนตัว");
+const UserCollection = collection(ติดต่อฐานข้อมูล, "ข้อมูลส่วนตัว");
 
 const AddNewUser = async (AddUID, AddName, AddTel, AddBirthDay) => {
     const NewDoc = await addDoc(UserCollection, {
@@ -106,18 +101,20 @@ const GoToLogin = async () => {
 // !เพิ่มข้อมูลส่วนตัว
 
 const AddAdmin = async () => {
-  console.log(MyFirstName, MyLastName, MyPhone, MyBirthday)
   const TempData = {
     ชื่อตัว : MyFirstName,
     นามสกุล : MyLastName,
     หมายเลขโทรศัพท์ : MyPhone,
     วันเดือนปีเกิด : Timestamp.fromDate(new Date(MyBirthday)),
-    เลขประจำตัวบัญชี : ProfileData.uid
+    เลขประจำตัวบัญชี : ProfileData.uid, 
+    สถานภาพ : LevelData
   };
-  const UserData = doc(GetFireStoreNa, "ข้อมูลส่วนตัว", ProfileData.uid)
+  console.log(LevelData)
+  const UserData = doc(ติดต่อฐานข้อมูล, "ข้อมูลส่วนตัว", ProfileData.uid)
   setDoc(UserData, TempData, {merge: true})
   .then( () =>{
       console.log("อัปเดตข้อมูลเรียบร้อยแล้วน้า");
+      QueryForDocument()
   })
   .catch( (error) =>{
       console.log(`มีข้อผิดพลาด ${error} เกิดขึ้น`);
@@ -127,14 +124,22 @@ const AddAdmin = async () => {
 // Monitor auth state
 // *ตรวจสอบสิทธิ์การเข้าถึง
 const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
+  onAuthStateChanged(ตัวตน, user => {
     if (user){
-      showLoginData(user)
+      LevelData = user.email.split("@")[1]
+      if (LevelData == "student.chula.ac.th"){
+        LevelData = "นิสิต"
+      } else if (LevelData == ".chula.ac.th"){
+        LevelData = "เจ้าหน้าที่"
+      } else {
+        LevelData = "บุคคลภายนอก"
+      }
+      ShowRegister(LevelData, user)
       ProfileData = user
-      QueryForDocument()
     }
     else{
       console.log(user)
+      sessionStorage.clear()
       GoToLogin()
       console.log("ไม่มีสิทธิ์");
     }
@@ -149,20 +154,10 @@ const MyReForm = document.getElementById("RegisterMyProfile")
 MyReForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-<<<<<<< HEAD
   MyFirstName = document.getElementById("FirstNameInPut").value
   MyLastName = document.getElementById("LastNameInPut").value
   MyPhone = document.getElementById("PhoneInPut").value
   MyBirthday = document.getElementById("BirthInPut").value
-=======
-  const MyFirstName = document.getElementById("FirstNameInPut")
-  const MyLastName = document.getElementById("LastNameInPut")
-  const MyPhone = document.getElementById("PhoneInPut")
-
-  console.log(MyFirstName.value)
-  console.log(MyLastName.value)
-  console.log(MyPhone.value)
->>>>>>> 943f3ee3001a4093929e7651c5d5a8c2e6217177
 
   AddAdmin()
 })
@@ -174,13 +169,13 @@ const Submited = async () => {
 
 // !ย้ายไปหน้าข้อมูลส่วนตัว
 const GoToProfilePage = async () => {
-  location.href = "index.html"
+  location.href = "Profile.html"
 }
 
 // !ดูว่าลงทะเบียนสำเร็จไหม
 const QueryForDocument = async () => {
   const UserOrdersQuery = query(
-    collection(GetFireStoreNa, "ข้อมูลส่วนตัว"),
+    collection(ติดต่อฐานข้อมูล, "ข้อมูลส่วนตัว"),
     where("เลขประจำตัวบัญชี", "==", ProfileData.uid),
     // orderBy("GPX"),
     limit(3)

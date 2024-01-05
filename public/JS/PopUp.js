@@ -89,7 +89,7 @@ SignInBTN.addEventListener("click", InIN)
 
 // redirect to dashboard page
 const GoToDashboard = async () => {
-  location.href = "Learn.html"
+  location.href = "Profile.html"
 }
 
 // Monitor auth state
@@ -118,3 +118,4 @@ const monitorAuthState = async () => {
 monitorAuthState();
 
 console.log("สวัสดีครับ");
+console.log(sessionStorage.getItem("เลขผู้ใช้"));

@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/542deac178.js" crossorigin="anonymous"></script>
 
-  <script type="module" src="/dist/RegisterProfile.bundle.js"></script>
+  <script type="module" src="/dist/UserProfile.bundle.js"></script>
 </head>
 <body>
 
@@ -88,42 +88,42 @@
             </div>
             <div class="offcanvas-body">    <!-- !offcanvas-body -->
               <nav class="nav nav-pills flex-column nav-tabs">
-                <a class="nav-link"  href="" aria-current="page">
+                <a class="nav-link"  href="Home.html" aria-current="page">
                   <svg class="bi me-1" width="16" height="16"><use xlink:href="#home"/></svg>
                   Home
                 </a>
-                <a class="nav-link" href="#Services">
+                <a class="nav-link" href="Services.html">
                   <svg class="bi me-1" width="16" height="16"><use xlink:href="#grid"/></svg>
                   Services
                 </a>
                 <nav class="nav nav-pills flex-column">
-                  <a class="nav-link ms-3 my-1" href="#LabEquip">
+                  <a class="nav-link ms-3 my-1" href="LabEquip.html">
                     <i class="me-2 fa-solid fa-flask-vial" style="color: #511f1f;"></i>
                     Lab equipment</a>
-                  <a class="nav-link ms-3 my-1" href="#BookRoom">
+                  <a class="nav-link ms-3 my-1" href="BookRoom.html">
                     <svg class="ms-1 bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                     Reserve a room</a>
-                  <a class="nav-link ms-3 my-1" href="#Request">
+                  <a class="nav-link ms-3 my-1" href="Request.html">
                     <i class="ms-2 me-2 fa-solid fa-file-waveform" style="color: #511f1f;"></i>
                     Forms</a>
                 </nav>
-                <a class="nav-link" href="#Status">
+                <a class="nav-link" href="Status.html">
                   <svg class="bi me-1" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
                   Status
                 </a>
                 <nav class="nav nav-pills flex-column">
-                  <a class="nav-link ms-3 my-1" href="#Return">
+                  <a class="nav-link ms-3 my-1" href="Return.html">
                     <i class="me-2 fa-solid fa-flask" style="color: #511f1f;"></i>
                     Return</a>
-                  <a class="nav-link ms-3 my-1" href="#ChangRoom">
+                  <a class="nav-link ms-3 my-1" href="ChangeRoom.html">
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                    ChangRoom</a>
+                    ChangeRoom</a>
                 </nav>
-                <a class="nav-link" href="#Profile">
+                <a class="nav-link" href="Profile.html">
                   <svg class="bi me-1" width="16" height="16"><use xlink:href="#people-circle"/></svg>
                   Profile
                 </a>
-                <a class="nav-link" href="#QAndA">
+                <a class="nav-link" href="QAndA.html">
                   <i class="fa-solid fa-question me-2" style="color: #15181e;"></i>
                   Q&A
                 </a>
@@ -136,10 +136,16 @@
         <!-- !พื้นที่ทำงาน -->
       <div class="col-9">
         <div data-bs-spy="scroll" data-bs-target="#NavbarScrollspy" data-bs-smooth-scroll="true" class="" tabindex="0">
-          <div id="Status">
+          <div id=""> <!-- !แก้ตรงนี้ด้วย -->
             <table class="table">
               <thead class="table-group-divider">
-                <div class="display-3 mt-5 mb-1">โปรด</div>
+                <div class="row justify-content-end">
+                  <div class="col-8 display-3 mt-4 mb-1">โปรด</div>
+                  <div id="lblAuthPicture" class="authlabel text-end col-1"></div>
+                  <div class="col-3 mt-4 text-end"><button id="SignOutButton" class="google-sign-in-button" type="button">
+                    Sign out
+                  </button></div>
+                </div>
               </thead>
               <tbody class="table-group-divider">
                 <tr>
