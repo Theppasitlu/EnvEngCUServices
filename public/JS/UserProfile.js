@@ -4,7 +4,6 @@ import "../CSS/IndexTheme.css";
 
 import { 
   SignOutBTN,
-  ShowUserProfile,
   } from './ui.js'
 
 // const MyCustomFont = new FontFace("VarCustomFont", `url(${FontEnv})`);
@@ -30,9 +29,10 @@ SignOutBTN.addEventListener("click", LogOut)
 
 // Monitor auth state
 // *ตรวจสอบสิทธิ์การเข้าถึง
-MonitorAuthState()
+var เลข = MonitorAuthState()
 const เลขผู้ใช้ = sessionStorage.getItem("เลขผู้ใช้") 
 var ข้อมูลส่วนบุคคล = QueryForDocument(ติดต่อฐานข้อมูล, เลขผู้ใช้)
+console.log(เลข)
 console.log(ข้อมูลส่วนบุคคล)
 // ShowUserProfile(ข้อมูลส่วนบุคคล)
 

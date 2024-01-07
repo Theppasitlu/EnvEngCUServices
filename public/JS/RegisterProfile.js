@@ -8,7 +8,6 @@ import {
   ShowRegister,
   } from './ui.js'
 
-
 import { initializeApp } from "firebase/app";
 import { 
     getAuth,
@@ -34,7 +33,6 @@ import {
   
 import {
     LogOut,
-    MonitorAuthState,
     } from './BasicFunction.js'
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -84,14 +82,8 @@ const AddNewUser = async (AddUID, AddName, AddTel, AddBirthDay) => {
 }
 
 // *Log out
-const logout = async () => {
-  await signOut(auth).then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-}
-SignOutBTN.addEventListener("click", logout)
+
+SignOutBTN.addEventListener("click", LogOut)
 
 // *redirect to login page
 const GoToLogin = async () => {
@@ -104,6 +96,7 @@ const AddAdmin = async () => {
   const TempData = {
     ชื่อตัว : MyFirstName,
     นามสกุล : MyLastName,
+    จดหมายอิเล็กทรอนิกส์ : ProfileData.email,
     หมายเลขโทรศัพท์ : MyPhone,
     วันเดือนปีเกิด : Timestamp.fromDate(new Date(MyBirthday)),
     เลขประจำตัวบัญชี : ProfileData.uid, 
@@ -153,12 +146,11 @@ console.log("เว็บไซต์นี้เขียนโดยเทพ�
 const MyReForm = document.getElementById("RegisterMyProfile")
 MyReForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
   MyFirstName = document.getElementById("FirstNameInPut").value
   MyLastName = document.getElementById("LastNameInPut").value
   MyPhone = document.getElementById("PhoneInPut").value
   MyBirthday = document.getElementById("BirthInPut").value
-
+  // console.log(ProfileData)
   AddAdmin()
 })
 

@@ -31,7 +31,11 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const ประจำตัวตน = getAuth();
+const เลขของผู้ใช้ = ประจำตัวตน.currentUser;
 ประจำตัวตน.languageCode = 'th';
+
+console.log(เลขของผู้ใช้)
+console.log(ประจำตัวตน)
 
 export const LogOut = async () => {
   await signOut(ประจำตัวตน).then(() => {
@@ -47,10 +51,13 @@ const GoToLogin = async () => {
 
 
 export const MonitorAuthState = async () => {
+  var เลขของผู้ใช้
+  console.log(เลขของผู้ใช้)
   onAuthStateChanged(ประจำตัวตน, ผู้ใช้นะ => {
     if (ผู้ใช้นะ){
       ShowProfilePic(ผู้ใช้นะ)
-      const เลขของผู้ใช้ = ผู้ใช้นะ.uid
+      เลขของผู้ใช้ = ผู้ใช้นะ.uid
+      console.log(เลขของผู้ใช้)
       sessionStorage.setItem("เลขผู้ใช้", เลขของผู้ใช้)
       // showApp()
       // hideLoginError()
@@ -63,6 +70,7 @@ export const MonitorAuthState = async () => {
       // lblAuthState.innerHTML = `You're not logged in. นะครับ`
     }
   });
+  console.log(เลขของผู้ใช้)
 }
 
 export const MonitorAuthRegister = async () => {
@@ -89,10 +97,10 @@ const GoToRegiser = async () => {
   location.href = "Register.html"
 }
 
-export const  QueryForDocument = async (ติดต่อฐานข้อมูล, เลขผู้ใช้) => {
+export const  QueryForDocument = async (ติดต่อฐานข้อมูล, เลขของผู้ใช้) => {
   const ข้อมูลกรอง = query(
     collection(ติดต่อฐานข้อมูล, "ข้อมูลส่วนตัว"),
-    where("เลขประจำตัวบัญชี", "==", เลขผู้ใช้),
+    where("เลขประจำตัวบัญชี", "==", เลขของผู้ใช้),
     // orderBy("GPX"),
     limit(3)
   );
@@ -112,3 +120,12 @@ export const  QueryForDocument = async (ติดต่อฐานข้อม�
     } 
   });
 }
+
+
+if (ประจำตัวตน.currentUser){
+  console.log(ประจำตัวตน.currentUser)
+} else {
+  console.log("ไม่มีสิทธิ์")
+  console.log(ประจำตัวตน)
+}
+

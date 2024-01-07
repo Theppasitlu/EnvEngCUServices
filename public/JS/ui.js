@@ -35,6 +35,7 @@ export const showLoginError = (error) => {
 
 export const ShowRegister = (ระดับ, ผู้ใช้) => {
   lblAuthLevel.innerHTML = `${ระดับ}`
+  lblAuthEmail.innerHTML = `${ผู้ใช้.email}`
   lblAuthPicture.innerHTML = `<img src=${ผู้ใช้.photoURL}>`
 }
 
